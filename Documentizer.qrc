@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/Documentizer"/>
+    <qresource prefix="/icons">
+        <file>D:/icons/icons8-eye-64.png</file>
+        <file>D:/icons/icons8-save-64.png</file>
+        <file>D:/icons/icons-master/devices/64/scanner.svg</file>
+        <file>D:/icons/icons-master/devices/48/printer.svg</file>
+        <file>D:/icons/icons-master/places/48/folder-documents-open.svg</file>
+        <file>D:/icons/icons8-plus-+-64.png</file>
+        <file>D:/icons/rotate-right_2.svg</file>
+        <file>D:/icons/rotate-left_2.svg</file>
+        <file>D:/icons/close.png</file>
+    </qresource>
+</RCC>
