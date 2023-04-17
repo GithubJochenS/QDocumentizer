@@ -9,7 +9,7 @@ DeleteDialog::DeleteDialog(QWidget* parent, QByteArray* pdf) : QDialog(parent)
     QPdfDocument* doc = new QPdfDocument();
     QPdfView* pdfView = new QPdfView();
     pdfView->setDocument(doc);
-    pdfView->setPageMode(QPdfView::MultiPage);
+    pdfView->setPageMode(QPdfView::PageMode::MultiPage);
     //pdfView->setZoomMode(QPdfView::FitInView); //Lags the Widget with certin PDFs at 450 Height but not on 350 <---???????
     vBoxlayout->addWidget(pdfView, 4);
     QBuffer* buffer = new QBuffer();
@@ -27,7 +27,7 @@ DeleteDialog::DeleteDialog(QWidget* parent, QByteArray* pdf) : QDialog(parent)
     connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
-    pdfView->setZoomMode(QPdfView::CustomZoom);
+    pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
     pdfView->setZoomFactor(0.4);
 
 }

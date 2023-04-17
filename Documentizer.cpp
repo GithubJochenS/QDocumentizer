@@ -29,9 +29,9 @@ Documentizer::Documentizer(QWidget* parent, QApplication* _app)
     dbase = new database(this);
     dbase->initDB(this->readConfig());
     QPdfView* pdfView = new QPdfView(this);
-    pdfView->setZoomMode(QPdfView::FitInView); //Lags out the Widget with certain pdfs at a certain height...????
+    pdfView->setZoomMode(QPdfView::ZoomMode::FitInView); //Lags out the Widget with certain pdfs at a certain height...????
     pdfView->setDocument(doc);
-    pdfView->setPageMode(QPdfView::MultiPage);
+    pdfView->setPageMode(QPdfView::PageMode::MultiPage);
     pdfView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     pdfView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     //ui->pdfView->setZoomMode(QPdfView::CustomZoom);
@@ -339,12 +339,12 @@ void Documentizer::deleteFile() {
 }
 
 void Documentizer::printPDF() {
-    if (doc->status() == QPdfDocument::Ready) {
+    if (doc->status() == QPdfDocument::Status::Ready) {
         QPrinter printer;
         QPrintDialog dlg(&printer, this);
         if (dlg.exec() == QDialog::Accepted) {
             for (int i = 0; i < doc->pageCount(); i++) {
-                QImage img(doc->render(i, printer.pageRect().size()));
+                QImage img(doc->render(i, printer.pageRect(QPrinter::DevicePixel).size().toSize()));
                 QPainter painter(&printer);
                 painter.drawImage(QPoint(0, 0), img);
                 painter.end();

@@ -42,8 +42,8 @@ FileDialog::FileDialog(QWidget* parent) :
 
     QPdfView* pdfView = new QPdfView();
     pdfView->setDocument(doc);
-    pdfView->setPageMode(QPdfView::MultiPage);
-    pdfView->setZoomMode(QPdfView::FitInView);
+    pdfView->setPageMode(QPdfView::PageMode::MultiPage);
+    pdfView->setZoomMode(QPdfView::ZoomMode::FitInView);
     gridLayout->addWidget(pdfView, 0, 3, 5, 1);
     gridLayout->setColumnStretch(3, 2);
 
@@ -167,8 +167,8 @@ FileDialog::FileDialog(QWidget* parent, QString name, QByteArray* pdf, QStringLi
 
     QPdfView* pdfView = new QPdfView();
     pdfView->setDocument(doc);
-    pdfView->setPageMode(QPdfView::MultiPage);
-    pdfView->setZoomMode(QPdfView::FitInView);
+    pdfView->setPageMode(QPdfView::PageMode::MultiPage);
+    pdfView->setZoomMode(QPdfView::ZoomMode::FitInView);
     gridLayout->addWidget(pdfView, 0, 3, 5, 1);
     gridLayout->setColumnStretch(3, 2);
     QBuffer* buffer = new QBuffer();
@@ -273,7 +273,7 @@ void FileDialog::on_fileOpenButton_clicked()
 
         fileEdit->setText(fileName);
 
-        dateTimeEdit->setDateTime(doc->metaData(QPdfDocument::CreationDate).toDateTime());
+        dateTimeEdit->setDateTime(doc->metaData(QPdfDocument::MetaDataField::CreationDate).toDateTime());
         nameEdit->setEnabled(true);
         dateTimeEdit->setEnabled(true);
         personPlusButton->setEnabled(true);

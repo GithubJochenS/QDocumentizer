@@ -179,8 +179,8 @@ QString ScanDialog::getFile() {
     }
 
     for (int i = 0; i < scanImageList->count(); i++) {
-        painter.drawImage(QPoint(0, 0), scanImageList->at(i).scaledToWidth(printer.pageRect().width(), Qt::SmoothTransformation));
-        painter.drawImage(printer.pageRect(), scanImageList->at(i), printer.pageRect(), Qt::NoFormatConversion);
+        painter.drawImage(QPoint(0, 0), scanImageList->at(i).scaledToWidth(printer.pageRect(QPrinter::DevicePixel).width(), Qt::SmoothTransformation));
+        painter.drawImage(printer.pageRect(QPrinter::DevicePixel), scanImageList->at(i), printer.pageRect(QPrinter::DevicePixel), Qt::NoFormatConversion);
         painter.resetTransform();
         if (i != scanImageList->count()-1)
             printer.newPage();
